@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Persistindo Datas em Campos do Tipo Date</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	</head>
+	<body>
+		<h1>Persistindo Datas em Campos do Tipo Date</h1>
+		
+		<p>
+		Neste post veremos como salvar campos do tipo Date em um banco de dados
+		utilizando a classe Calendar do pacote java.util. Como exemplo, vamos
+		criar uma tabela no banco de dados que salva datas(por motivos de
+		simplicidade, ignore a utilidade dessa tabela).
+		</p>
+		
+		<p>
+		CREATE TABLE datetable ( <br />
+		--some_date DATE <br />
+		);
+		</p>
+		
+		<p>
+		No código Java, se quisermos inserir um registro na tabela datetable,
+		podemos utilizar um prepared statement e configurar o campo some_date
+		passando como argumento um objeto do tipo java.sql.Date, obtido a partir
+		do método getTimeInMillis() de um objeto Calendar. Por exemplo, se
+		quisermos salvar a data de ontem na tabela, podemos executar o seguinte
+		código:
+		</p>
+		
+		<p>
+		---Main.java---
+		</p>
+		
+		<p>
+		Se executarmos um select no banco de dados, podemos ver que a data foi
+		inserida corretamente.
+		</p>
+		
+		<p>
+		SELECT * FROM datetable;
+		</p>
+		
+		<p>
+		------------ <br />
+		|some_date | <br />
+		|date      | <br />
+		+----------+ <br />
+		|2017-09-16| <br />
+		------------
+		</p>
+	</body>
+</html>
